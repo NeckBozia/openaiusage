@@ -6,7 +6,8 @@
       "Bash(bun run:*)",
       "Bash(git add:*)",
       "Bash(git push:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git reset:*)"
     ]
   }
 }
