@@ -2,8 +2,8 @@
 // When updating the original, sync changes here. Only CRED_FILE, KEYCHAIN_SERVICE,
 // the ccusage claudePath, and the globalThis registration ID differ.
 (function () {
-  const CRED_FILE = "~/.claude-2/.credentials.json"
-  const KEYCHAIN_SERVICE = "Claude Code-credentials-b0ef1cf5"
+  const CRED_FILE = "~/.claude-edge/.credentials.json"
+  const KEYCHAIN_SERVICE = "Claude Code-credentials-701e9c29"
   const USAGE_URL = "https://api.anthropic.com/api/oauth/usage"
   const REFRESH_URL = "https://platform.claude.com/v1/oauth/token"
   const CLIENT_ID = "9d1c250a-e61b-44d9-88ed-5944d1962f5e"
@@ -284,7 +284,7 @@
     const d = since.getDate()
     const sinceStr = "" + y + (m < 10 ? "0" : "") + m + (d < 10 ? "0" : "") + d
 
-    const result = ctx.host.ccusage.query({ since: sinceStr, claudePath: "~/.claude-2" })
+    const result = ctx.host.ccusage.query({ since: sinceStr, claudePath: "~/.claude-edge" })
     if (!result || typeof result !== "object" || typeof result.status !== "string") {
       return { status: "runner_failed", data: null }
     }
