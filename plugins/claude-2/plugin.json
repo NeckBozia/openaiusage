@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "claude-2",
-  "name": "Claude (2)",
+  "name": "Claude Edge",
   "version": "0.0.1",
   "entry": "plugin.js",
   "icon": "icon.svg",

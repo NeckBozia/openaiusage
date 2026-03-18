@@ -220,6 +220,21 @@ export function useTrayIcon({
         : undefined
       const providerPercentText = formatTrayPercentText(providerBars[0]?.fraction)
 
+      // Build fixed dual-Claude tray title: "XX% | YY%"
+      const claudeIds = ["claude", "claude-2"] as const
+      const claudePercents = claudeIds.map((cid) => {
+        const cBars = getTrayPrimaryBars({
+          pluginsMeta: pluginsMetaRef.current,
+          pluginSettings: currentSettings,
+          pluginStates: pluginStatesRef.current,
+          maxBars: 1,
+          displayMode: displayModeRef.current,
+          pluginId: cid,
+        })
+        return formatTrayPercentText(cBars[0]?.fraction)
+      })
+      const dualClaudeTrayTitle = claudePercents.join(" | ")
+
       const nextPreview: TraySettingsPreview = {
         bars: barsForPreview,
         providerBars,
@@ -287,7 +302,7 @@ export function useTrayIcon({
         .then(async (img) => {
           await tray.setIcon(img)
           await tray.setIconAsTemplate(true)
-          await setTrayTitle(providerPercentText)
+          await setTrayTitle(dualClaudeTrayTitle)
         })
         .catch((e) => {
           console.error("Failed to update tray icon:", e)

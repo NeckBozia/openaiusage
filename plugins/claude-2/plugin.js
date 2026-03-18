@@ -3,7 +3,7 @@
 // the ccusage claudePath, and the globalThis registration ID differ.
 (function () {
   const CRED_FILE = "~/.claude-2/.credentials.json"
-  const KEYCHAIN_SERVICE = "Claude Code 2-credentials"
+  const KEYCHAIN_SERVICE = "Claude Code-credentials-b0ef1cf5"
   const USAGE_URL = "https://api.anthropic.com/api/oauth/usage"
   const REFRESH_URL = "https://platform.claude.com/v1/oauth/token"
   const CLIENT_ID = "9d1c250a-e61b-44d9-88ed-5944d1962f5e"
