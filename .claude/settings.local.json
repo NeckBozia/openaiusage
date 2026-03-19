@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(security find-generic-password:*)",
+      "Bash(security dump-keychain:*)",
+      "Bash(bun run:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(git reset:*)",
+      "Bash(brew install:*)",
+      "Bash(gh auth:*)"
+    ]
+  }
+}

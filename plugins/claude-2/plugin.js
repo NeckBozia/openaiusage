@@ -1,6 +1,9 @@
+// IMPORTANT: This is a copy of plugins/claude/plugin.js for a second Claude account.
+// When updating the original, sync changes here. Only CRED_FILE, KEYCHAIN_SERVICE,
+// the ccusage claudePath, and the globalThis registration ID differ.
 (function () {
-  const CRED_FILE = "~/.claude-chrome/.credentials.json"
-  const KEYCHAIN_SERVICE = "Claude Code-credentials-827b87fe"
+  const CRED_FILE = "~/.claude-edge/.credentials.json"
+  const KEYCHAIN_SERVICE = "Claude Code-credentials-701e9c29"
   const USAGE_URL = "https://api.anthropic.com/api/oauth/usage"
   const REFRESH_URL = "https://platform.claude.com/v1/oauth/token"
   const CLIENT_ID = "9d1c250a-e61b-44d9-88ed-5944d1962f5e"
@@ -102,7 +105,7 @@
     if (parsed) return parsed
 
     // Some macOS keychain items are returned by `security ... -w` as hex-encoded UTF-8 bytes.
-    // Example prefix: "7b0a" ( "{\\n" ).
+    // Example prefix: "7b0a" ( "{\n" ).
     // Support both plain hex and "0x..." forms.
     let hex = String(text).trim()
     if (hex.startsWith("0x") || hex.startsWith("0X")) hex = hex.slice(2)
@@ -281,7 +284,7 @@
     const d = since.getDate()
     const sinceStr = "" + y + (m < 10 ? "0" : "") + m + (d < 10 ? "0" : "") + d
 
-    const result = ctx.host.ccusage.query({ since: sinceStr, claudePath: "~/.claude-chrome" })
+    const result = ctx.host.ccusage.query({ since: sinceStr, claudePath: "~/.claude-edge" })
     if (!result || typeof result !== "object" || typeof result.status !== "string") {
       return { status: "runner_failed", data: null }
     }
@@ -447,7 +450,7 @@
       ctx.host.log.error("usage returned error: status=" + resp.status)
       throw "Usage request failed (HTTP " + String(resp.status) + "). Try again later."
     }
-    
+
     ctx.host.log.info("usage fetch succeeded")
 
     let data
@@ -572,5 +575,5 @@
     return { plan: plan, lines: lines }
   }
 
-  globalThis.__openusage_plugin = { id: "claude", probe }
+  globalThis.__openusage_plugin = { id: "claude-2", probe }
 })()
